@@ -19,5 +19,14 @@ export class TransactionController {
             parseInt(this.inputQuantity.value),
             parseFloat(this.inputValue.value)
         )
+
+        this.cleanForm();
+    }
+
+    cleanForm(): void {
+        this.inputDate.value = '';
+        this.inputQuantity.value = '';
+        this.inputValue.value = '';
+        this.inputDate.focus();
     }
 }
