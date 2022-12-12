@@ -1,11 +1,7 @@
 import { Transactions } from "../models/transactions.js";
+import { View } from "./view.js";
 
-export class TransactionsView {
-    private element: HTMLElement;
-
-    constructor(selector: string) {
-        this.element = document.querySelector(selector);
-    }
+export class TransactionsView extends View<Transactions> {
 
     template(model: Transactions): string {
         return `
@@ -30,10 +26,5 @@ export class TransactionsView {
             </tbody>
         </table>
         `;
-    }
-
-    update(model: Transactions): void {
-        const template = this.template(model)
-        this.element.innerHTML = template;
     }
 }
