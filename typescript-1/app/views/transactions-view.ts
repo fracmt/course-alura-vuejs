@@ -17,7 +17,7 @@ export class TransactionsView extends View<Transactions> {
                 ${model.list().map(transaction => {
             return `
                         <tr>
-                            <td>${new Intl.DateTimeFormat().format(transaction.date)}</td>
+                            <td>${this.formatDate(transaction.date)}</td>
                             <td>${transaction.quantity}</td>
                             <td>${transaction.value}</td>
                         </tr>
@@ -26,5 +26,9 @@ export class TransactionsView extends View<Transactions> {
             </tbody>
         </table>
         `;
+    }
+
+    private formatDate(date: Date): string {
+        return new Intl.DateTimeFormat().format(date)
     }
 }
