@@ -1,5 +1,5 @@
 <template>
-	<div class="box">
+	<div class="box form-task">
 		<div class="columns">
 			<div class="column is-8" role="form" aria-label="Form to create new tasks">
 				<input type="text" class="input" placeholder="What task will you start?" v-model="taskDescription">
@@ -39,3 +39,10 @@ export default defineComponent({
 	}
 })
 </script>
+
+<style>
+.form-task {
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
+}
+</style>
