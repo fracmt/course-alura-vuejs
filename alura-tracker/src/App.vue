@@ -1,7 +1,7 @@
 <template>
 	<main class="columns is-gapless is-multiline" :class="{ 'dark-mode': darkModeActive }">
 		<div class="column is-one-quarter">
-			<side-bar @toChangeTheme="changeTheme"/>
+			<side-bar @toChangeTheme="changeTheme" />
 		</div>
 		<div class="column is-three-quarter content">
 			<router-view></router-view>
@@ -21,7 +21,7 @@ export default defineComponent({
 			darkModeActive: false
 		}
 	},
-	methods: {		
+	methods: {
 		changeTheme(darkMode: boolean) {
 			this.darkModeActive = darkMode
 		}
@@ -30,17 +30,16 @@ export default defineComponent({
 </script>
 
 <style>
-.taskList {
-	padding: 1.25rem;
-}
 main {
 	--bg-primary: #fff;
 	--text-primary: #000;
 }
+
 main.dark-mode {
 	--bg-primary: #2b2d42;
 	--text-primary: #ddd;
 }
+
 .content {
 	background-color: var(--bg-primary);
 }

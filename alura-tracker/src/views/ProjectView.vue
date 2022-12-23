@@ -1,14 +1,63 @@
 <template>
-	<h1>Projects</h1>
+	<section class="projects">
+		<h1 class="title">Projects</h1>
+		<form @submit.prevent="save">
+			<div class="field">
+				<label for="projectName" class="label">
+					Name
+				</label>
+				<input type="text" class="input" v-model="projectName" id="projectName">
+			</div>
+			<div class="field">
+				<button class="button" type="submit">
+					Save
+				</button>
+			</div>
+		</form>
+		<table class="table is-fullwidth">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="project in projects" :key="project.id">
+					<td>{{ project.id }}</td>
+					<td>{{ project.name }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import IProject from '../interfaces/IProject'
 
 export default defineComponent({
-	name: "ProjectView",	
+	name: "ProjectView",
+	data() {
+		return {
+			projectName: '',
+			projects: [] as IProject[]
+		}
+	},
+	methods: {
+		save() {
+			const project: IProject = {
+				name: this.projectName,
+				id: new Date().toISOString()
+			}
+			this.projects.push(project)
+			this.projectName = ''
+		}
+	}
 });
 </script>
 
-<style>
+<style scoped>
+.projects {
+	padding: 1.25rem;
+}
 </style>
