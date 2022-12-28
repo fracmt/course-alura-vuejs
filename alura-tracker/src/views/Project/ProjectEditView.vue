@@ -19,7 +19,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useStore } from '@/store';
-import { ADD_PROJECT, EDIT_PROJECT } from '@/store/mutations-type';
+import { ADD_PROJECT, EDIT_PROJECT, NOTIFY } from '@/store/mutations-type';
+import { NotificationType } from '@/interfaces/INotification';
 
 export default defineComponent({
 	name: "ProjectEditView",
@@ -50,6 +51,11 @@ export default defineComponent({
 				this.store.commit(ADD_PROJECT, this.projectName)
 			}
 			this.projectName = ''
+			this.store.commit(NOTIFY, {
+				title: 'The new project is saved',
+				text: 'The project was successfully saved.',
+				type: NotificationType.SUCCESS
+			})
 			this.$router.push('/project')
 
 		}
