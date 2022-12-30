@@ -20,8 +20,8 @@
 import { defineComponent } from 'vue';
 import { useStore } from '@/store';
 import { ADD_PROJECT, EDIT_PROJECT } from '@/store/mutations-type';
-import { notificationMixin } from '@/mixins/notification';
 import { NotificationType } from '@/interfaces/INotification';
+import useNotifier from '@/hooks/notifier'; 
 
 export default defineComponent({
 	name: "ProjectEditView",
@@ -30,7 +30,6 @@ export default defineComponent({
 			type: String
 		}
 	},
-	mixins: [notificationMixin],
 	mounted() {
 		if (this.id) {
 			const project = this.store.state.projects.find(proj => proj.id == this.id)
@@ -59,8 +58,10 @@ export default defineComponent({
 	},
 	setup() {
 		const store = useStore()
+		const { notify } = useNotifier()
 		return {
-			store
+			store,
+			notify
 		}
 	}
 });
