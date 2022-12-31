@@ -1,8 +1,11 @@
 <template>
 	<task-box>
 		<div class="columns">
-			<div class="column is-7">
+			<div class="column is-4">
 				{{task.description || 'Without description'}}
+			</div>
+			<div class="column is-3">
+				{{task.project?.name || 'N/A' }}
 			</div>
 			<div class="column">
 				<chronometer-timer :elapsedTime="task.elapsedTime" />
